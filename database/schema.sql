@@ -27,8 +27,13 @@ CREATE TABLE IF NOT EXISTS custody (
     start_date DATE NOT NULL,
     expected_return_date DATE,
     actual_return_date DATE,
+
+    has_deduction INTEGER NOT NULL DEFAULT 0, -- 0 = لا ، 1 = نعم
+    decision_reference VARCHAR(100), -- رقم القرار المرجعي - اختياري
+
     notes TEXT,
     status VARCHAR(20) DEFAULT 'نشطة', -- (نشطة / مكتملة / متأخرة)
+
     FOREIGN KEY (vehicle_id) REFERENCES vehicles(id),
     FOREIGN KEY (person_id) REFERENCES persons(id)
 );
